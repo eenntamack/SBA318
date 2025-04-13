@@ -1,0 +1,16 @@
+format for all the data 
+{
+        "":       ---The recipe name---
+        [   
+            {
+            ingredients: [
+                "",
+            ],
+            instructions: [
+                "",
+            ],
+            url: "",
+            source: ""
+            }
+        ]
+},
