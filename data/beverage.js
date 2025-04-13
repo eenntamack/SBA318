@@ -229,3 +229,5 @@ const beverages=[
         ]
     },
 ]
+
+modules.export = beverages;
