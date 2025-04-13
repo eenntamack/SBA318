@@ -1,0 +1,48 @@
+This is a recipe express application where a user can request whatever recipe they desire, in addition 
+to the other Lab assignment for
+
+1. This time there are many more recipes for each request
+2. I'm going to utilize the user to change paths depending on the recipe
+3. Maybe theres going to be categories dessert, lunches, appetizers, drinks, dinners, etc.
+    i. Route structure 
+        - index.js
+            - Just a main introductory page for the user to start searching for recipes
+            - Upon clicking the recipe the user can be prompted a category of recipes
+                - each categoy can be given a path 
+                    e.g. ("/recipes/categories/:dessert") => shows a list of availible desserts
+                - a recipe can be searched by letter in the query
+                    e.g. ("/recipes?name=a") => shows a list of recipes by the first letter
+4. Middleware?
+    i. prompting a successful call for a recipe
+        - e.g. app.use("/recipe?name") => if there isnt a recipe that starts with that letter
+        log an error and return 404 else next()
+            same applies to the other routes
+    ii. confirming a download
+        i.using the Node fs library to write a file and download for the user
+
+5. Data structured?
+    i. The ingredients , images and "hopefully" instructions will be added in key value pairs in a dictionary: {ingredients:(string) ,set the ingredients into a list <li> , ingredients will be an array of ingredients,
+                image: url,
+                instructions:(string), put the instructions in a section container
+                }
+    ii. 
+
+6. HTML structure?
+    i. 2 pages for the template engine
+        i. one for the main selection, desserts, lunches, tec.
+            --------Choose a category-------
+            -desserts
+            -lunches
+            -...
+        ii. the actual recipes to be selected from
+            --------Desserts---------
+            -recipe1
+            -recipe2
+            -....
+        iii. the recipes 
+               ----Pancackes----
+                  ---image---
+            ingredients|instructions
+                       |
+                       |
+                       |
