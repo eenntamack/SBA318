@@ -278,3 +278,5 @@ const breakfast=[
         ]
     },
 ]
+
+modules.export = breakfast
