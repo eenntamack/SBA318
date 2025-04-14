@@ -230,4 +230,4 @@ const beverages=[
     },
 ]
 
-modules.export = beverages;
+module.exports = beverages;

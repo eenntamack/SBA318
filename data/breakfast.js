@@ -279,4 +279,4 @@ const breakfast=[
     },
 ]
 
-modules.export = breakfast
+module.exports = breakfast

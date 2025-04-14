@@ -243,3 +243,5 @@ desserts = [
         ]
     },
 ]
+
+module.exports = desserts;
