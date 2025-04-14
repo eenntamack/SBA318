@@ -13,7 +13,7 @@ app.use(express.static("./styles"))
 app.use(express.static("./pages"))
 app.use(express.static("./images"))
 
-app.use("/section/beverage",beverage)
+app.use("/beverage",beverage)
 const html = [
     "<p style=\"font-size:50px;\">testing</p>",
     "<p style=\"font-size:50px;\">debugging</p>",
