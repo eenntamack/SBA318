@@ -22,7 +22,11 @@
 </head>
 <body>
     <main>
-         #content#        
+         #content#  
+         <form action="/#category#/#recipe#/download">
+            <button type="submit" value="Recipe">Download Recipe</submit>
+         </form>   
+         #footer#   
     </main>
 </body>
 </html>

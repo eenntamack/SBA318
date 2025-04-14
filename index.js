@@ -37,6 +37,9 @@ app.engine("page", (filePath, data, callback) => {  // Change options to data
         const rendered = content.toString()
             .replace("#content#", data.content || "")
             .replace("#background#", data.background || "")
+            .replace("#footer#",data.footer || "")
+            .replace("#category#", data.category || "")
+            .replace("#recipe#", data.recipe || "")
         return callback(null, rendered);
     });
 });
@@ -47,27 +50,51 @@ app.set("view engine", "page");
 
 let num = 0
 app.get("/",(req,res)=>{
-    //res.write(html[2]);
-    //note reloading the page DOES not stop the interval, it stacks the interval's innner funcitons 2 fold
-    //stoppinng the server with revert the interval's function to the original state.
-    /*setInterval(()=>{
-        //implement a system where a user can request 
-        res.write(`<p style="background-color:rgb(${Math.max(255 - num,0)},${Math.max(255 - (num * 2),0)},${Math.max(255 - (num * 3),0)}); font-size:40px;">${num}</p>`);
-        num += 1;
-    },1000)*/
-    
-    //res.write("testing")
-    //res.end()
-    const data = {content: maincontent["main"],
+    const data = {content:   maincontent["main"] + "<footer style=\"color:white; position:relative; bottom:-100px; diplay:flex; flex-direction:column; justify-content:center;\"><h1>Disclaimer</h1><p>All recipes are used by their respective owners from allrecipes.com</footer>",
                   background: "ingredients_background_homepage(Daria-Yakovleva).jpg"
     }
 
     res.render("index",data);
-
-    //res.send(html[0]);
-    //res.write("testing")
-    //res.end()
 })
+
+app.get("/links",(req,res)=>{
+            link = [{
+                categories : [
+                    {
+                        href:"/beverage",
+                        rel:"beverages",
+                        type:"GET"
+                    },  
+                    {
+                        href:"/desserts",
+                        rel:"desserts",
+                        type:"GET"
+                    },  
+                    {
+                        href:"/lunch",
+                        rel:"lunch",
+                        type:"GET"
+                    },
+                    {
+                        href:"/breakfast",
+                        rel:"breakfast",
+                        type:"GET"
+                    }, 
+                ]  
+                },
+                {
+                recipes: [
+                    {
+                        href:"",
+                        rel:"recipe",
+                        type:"GET"
+                    }
+                ]
+                }
+            ]
+
+            res.json(link);
+        })
 
 
 app.listen(port, ()=>{

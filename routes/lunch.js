@@ -3,7 +3,7 @@ const router = express.Router();
 
 const lunch = require("../data/lunch");
 
-let contents = "<section>"
+let contents = "<section><h1 style=\"color:white; font-size:50px; -webkit-text-stroke: 0.5px black;\">Lunch</h1>"
 for(let i = 0; i < lunch.length; i++){
     contents += `<div style="margin:10px; overflow:scroll;"><a href=\"/lunch/${Object.keys(lunch[i])[0]}\">${Object.keys(lunch[i])[0]}</a></div>`
 }

@@ -24,8 +24,7 @@ main{
     flex-direction:column;
     justify-content:center;
     align-items:center;
-
-    transition: backdrop-filter 1s ease-in-out;
+    transition: backdrop-filter 0.25s ease-in-out;
 }
 
 a{
@@ -38,27 +37,49 @@ a:hover{
 }
 
 div{
-    background-color: rgba(33, 33, 33, 0.2);
+
     backdrop-filter: 0px;
-    padding: 10px;
+    padding: 20px;
     border-radius: 20px;
-    width:70%;
+    background-color: rgba(30,30,30,0.5);
+    width:80%;
     font-size:30px;
-    overflow: scroll;
-    height: 80%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 70%;
     color: white;   
+    top:-20px;
+
 }
 
 footer{
     position:relative; 
-    bottom:-30px; 
+    bottom:-50px; 
     font-size:20px; 
     font-weight:200; 
     background-color:rgba(30,30,30,0.5); 
     width:50vw;
     display: flex;
     justify-content: center;
+    align-items: center;
     font-weight: bold;
     color:white;
+}
+
+button{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    margin:20px;
+    width:100px;
+    height: 50px;
+    background-color: aqua;
+    text-justify:distribute;
+}
+form{
+    background-color: blueviolet;
+    display: flex;
+    align-items: center;
 }
 
