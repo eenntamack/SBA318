@@ -2,11 +2,13 @@ const express= require("express");
 const router = express.Router();
 
 const beverages = require("../data/beverage");
+//const dom  = require("../scripts/index.mjs");
 
-let contents = ""
+let contents = "<section>"
 for(let i = 0; i < beverages.length; i++){
-    contents += `<div><a href=\"/beverage/${Object.keys(beverages[i])[0]}\">${Object.keys(beverages[i])[0]}</a></div>`
+    contents += `<div style="margin:10px; overflow:scroll;"><a href=\"/beverage/${Object.keys(beverages[i])[0]}\">${Object.keys(beverages[i])[0]}</a></div>`
 }
+contents += "</section>"
 
 
 router.
@@ -14,7 +16,7 @@ router.
         get((req,res)=>{
             const data ={
                 content : contents,
-                background: "lunch_background(Lisy_).jpg"
+                background: "beverage_background(Thomas Mühl).jpg",
             }
             res.render("index",data)
         })

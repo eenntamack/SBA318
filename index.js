@@ -2,7 +2,11 @@ const express = require("express");
 const fs = require("fs")
 const bodyParser = require("body-parser");
 const beverage = require("./routes/beverage");
+const breakfast = require("./routes/breakfast")
+const dessert = require("./routes/desserts");
+const lunch = require("./routes/lunch");
 const maincontent = require("./shell/maincontent")
+
 const app = express();
 const port = 3000;
 
@@ -15,6 +19,9 @@ app.use(express.static("./images"))
 app.use(express.static("./scripts"))
 
 app.use("/beverage",beverage)
+app.use("/breakfast",breakfast)
+app.use("/desserts",dessert)
+app.use("/lunch",lunch)
 const html = [
     "<p style=\"font-size:50px;\">testing</p>",
     "<p style=\"font-size:50px;\">debugging</p>",

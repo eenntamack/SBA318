@@ -35,5 +35,16 @@ a{
 }
 
 a:hover{
+
     color: rgb(8, 49, 8);
+}
+
+section{
+    background-color: rgba(20,20,20,0.5); 
+    border-radius:20px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding:30px;
 }
