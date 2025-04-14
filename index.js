@@ -12,6 +12,7 @@ app.use(bodyParser.json({ extended: true }));
 app.use(express.static("./styles"))
 app.use(express.static("./pages"))
 app.use(express.static("./images"))
+app.use(express.static("./scripts"))
 
 app.use("/beverage",beverage)
 const html = [

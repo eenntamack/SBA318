@@ -31,12 +31,17 @@ router.
                     recipe = req.params.recipe
                     bev = beverages.find(a => Object.keys(a)[0] === recipe)  
                     if(bev){
-                        let structure ="<ol>"
+                        let ingredients ="<ul>"
+                        let instructions ="<ol>"
                         for(let i = 0 ; i < bev[recipe][0]["ingredients"].length;i++){
-                            structure +=  `<li>${bev[recipe][0]["ingredients"][i]}</li>`
+                            ingredients +=  `<li>${bev[recipe][0]["ingredients"][i]}</li>`
                         }
-                        structure += "</ol>"
-                        data.content = `${structure}`
+                        for(let i = 0; i < bev[recipe][0]["instructions"].length;i++){
+                            instructions += `<li>${bev[recipe][0]["instructions"][i]}</li>`
+                        }
+                        ingredients += "</ul>"
+                        instructions += "</ol>"
+                        data.content = `<div><h1>${recipe}</h1><h1>Ingredients</h1>${ingredients}  <h1>Directions</h1>${instructions}</div><footer>${bev[recipe][0]["source"]}</footer>`
                         data.background = `${JSON.stringify(bev[recipe][0]["url"])}`
                         res.render("recipes",data)
                     }else{
