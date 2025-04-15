@@ -107,6 +107,16 @@ app.get("/links",(req,res)=>{
                         type:"GET"
                     }
                 ]
+                },
+                {
+                    info:"Search recipe by ingredient,\"not perfect, cases where queries like 'of' will return ingredient strings that contain 'of' word\"",
+                    recipe_by_ingredient:[
+                        {
+                            href:"/category?ingredient=",
+                            rel: "recipe",
+                            type: "GET"
+                        }
+                    ]
                 }
             ]
 

@@ -37,13 +37,13 @@ router.
                         }
                     }
                 }
-
+                search += "<div style=\"overflow:scroll; display:flex; flex-direction:column; justify-content:center;\">"
                 if(matchingRecipes.length > 0){
                     for (let i = 0; i < matchingRecipes.length; i++) {
                         const recipeName = Object.keys(matchingRecipes[i])[0];
                         search+= `<a href="beverage/${recipeName}">${recipeName}</a>`
                     }
-
+                    search+="</div>"
                     data.content = search;
                     data.background = "beverage_background(Thomas Mühl).jpg";
                     res.render("index",data)

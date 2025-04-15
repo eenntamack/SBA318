@@ -3,7 +3,7 @@ const router = express.Router();
 
 const breakfasts = require("../data/breakfast");
 
-let contents = "<section style=\"overflow:scroll; margin:auto;\"><h1 style=\"color:white; font-size:50px; -webkit-text-stroke: 0.5px black;\">Lunch</h1><div style=\"margin:10px; display:flex; flex-direction:column;justify-content:center;\">"
+let contents = "<section style=\"overflow:scroll; margin:auto;\"><h1 style=\"color:white; font-size:50px; -webkit-text-stroke: 0.5px black;\">Breakfast</h1><div style=\"margin:10px; display:flex; flex-direction:column;justify-content:center;\">"
 for(let i = 0; i < breakfasts.length; i++){
     contents += `<a href=\"/breakfast/${Object.keys(breakfasts[i])[0]}\">${Object.keys(breakfasts[i])[0]}</a>`
 }
@@ -33,11 +33,13 @@ router.
                         }
                     }
                 }
+                search += "<div style=\"overflow:scroll; display:flex; flex-direction:column; justify-content:center;\">"
                 if(matchingRecipes.length > 0){
                     for (let i = 0; i < matchingRecipes.length; i++) {
                         const recipeName = Object.keys(matchingRecipes[i])[0];
                         search+= `<a href="breakfast/${recipeName}">${recipeName}</a>`
                     }
+                    search+="</div>"
                     data.content = search;
                     data.background = "breakfast_background(tikovka1355).jpg";
                     res.render("index",data)
@@ -74,6 +76,8 @@ router.
                         data.content = `<div><h1>${recipe}</h1><h1>Ingredients</h1>${ingredients}  <h1>Directions</h1>${instructions}`
                         data.footer = `<footer>${food[recipe][0]["source"]}</footer>`
                         data.background = `${JSON.stringify(food[recipe][0]["url"])}`
+                        data.category = 'breakfast'
+                        data.recipe = `${recipe}` 
                         res.render("recipes",data)
                     }else{
                         res.status(404).send("Recipe not found");

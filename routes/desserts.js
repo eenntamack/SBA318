@@ -3,7 +3,7 @@ const router = express.Router();
 
 const desserts = require("../data/desserts");
 
-let contents = "<section style=\"overflow:scroll; margin:auto;\"><h1 style=\"color:white; font-size:50px; -webkit-text-stroke: 0.5px black;\">Lunch</h1><div style=\"margin:10px; display:flex; flex-direction:column;justify-content:center;\">"
+let contents = "<section style=\"overflow:scroll; margin:auto;\"><h1 style=\"color:white; font-size:50px; -webkit-text-stroke: 0.5px black;\">Desserts</h1><div style=\"margin:10px; display:flex; flex-direction:column;justify-content:center;\">"
 for(let i = 0; i < desserts.length; i++){
     contents += `<a href=\"/desserts/${Object.keys(desserts[i])[0]}\">${Object.keys(desserts[i])[0]}</a>`
 }
@@ -34,15 +34,15 @@ router.
                         }
                     }
                 }
-
+                search += "<div style=\"overflow:scroll; display:flex; flex-direction:column; justify-content:center;\">"
                 if(matchingRecipes.length > 0){
                     for (let i = 0; i < matchingRecipes.length; i++) {
                         const recipeName = Object.keys(matchingRecipes[i])[0];
                         search+= `<a href="desserts/${recipeName}">${recipeName}</a>`
                     }
-
+                    search+="</div>"
                     data.content = search;
-                    data.background = "beverage_background(Thomas Mühl).jpg";
+                    data.background = "desserts_background(congerdesign).jpg";
                     res.render("index",data)
                 }else{
                     res.status(404).send("No recipes have the provided ingredient.");

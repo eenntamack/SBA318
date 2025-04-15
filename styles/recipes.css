@@ -47,7 +47,10 @@ div{
     height: 70%;
     color: white;   
     top:-20px;
-
+    border-style:solid;
+    border-width: 15px;
+    display:flex;
+    flex-direction: column;
 }
 
 footer{
@@ -62,6 +65,8 @@ footer{
     align-items: center;
     font-weight: bold;
     color:white;
+    border: solid white 5px;
+    border-radius: 20px;
 }
 
 button{
@@ -70,10 +75,24 @@ button{
     align-items: center;
     justify-content: center;
     margin:20px;
-    width:100px;
+    width:140px;
     height: 50px;
     position:relative;
-    text-justify:distribute;
+    background-color: rgba(30,30,30,0.8);
+    font-size: 20px;
+    border-radius: 10px;
+    border-width: 10px;
+    padding: 20px;
+    border-color: white;
+    color:white;
+    transition: background-color 0.125s ease-in-out;
+    transition: border-color 0.125s ease-in-out;
 }
+
+button:hover{
+    background-color: rgba(30,30,30,1);
+    border-color: black;
+}
+
 
 
