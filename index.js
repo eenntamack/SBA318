@@ -22,18 +22,19 @@ app.use("/beverage",beverage)
 app.use("/breakfast",breakfast)
 app.use("/desserts",dessert)
 app.use("/lunch",lunch)
+
+/** debugging, testing html injecting
 const html = [
     "<p style=\"font-size:50px;\">testing</p>",
     "<p style=\"font-size:50px;\">debugging</p>",
     "<p style=\"font-size:50px;\">rendering</p>",
     "<div> Hello world </div>"
-]
+]*/
 
 app.engine("page", (filePath, data, callback) => {  // Change options to data
     fs.readFile(filePath, (err, content) => {
         if (err) return callback(err);
 
-        // Use data.content and data.src instead of options
         const rendered = content.toString()
             .replace("#content#", data.content || "")
             .replace("#background#", data.background || "")
@@ -50,10 +51,9 @@ app.set("view engine", "page");
 
 let num = 0
 app.get("/",(req,res)=>{
-    const data = {content:   maincontent["main"] + "<footer style=\"color:white; position:relative; bottom:-100px; diplay:flex; flex-direction:column; justify-content:center;\"><h1>Disclaimer</h1><p>All recipes are used by their respective owners from allrecipes.com</footer>",
+    const data = {content:   maincontent["main"] +"<hr style=\"width:20vw;\">"+ "<a style=\" color:darkred;\" href=\"/links\">Usage</a>"+ "<footer style=\"color:white; position:relative; bottom:-100px; diplay:flex; flex-direction:column; justify-content:center;\"><h1>Disclaimer</h1><p>All recipes are used by their respective owners from allrecipes.com</footer>" ,
                   background: "ingredients_background_homepage(Daria-Yakovleva).jpg"
     }
-
     res.render("index",data);
 })
 
@@ -109,7 +109,7 @@ app.get("/links",(req,res)=>{
                 ]
                 },
                 {
-                    info:"Search recipe by ingredient,\"not perfect, cases where queries like 'of' will return ingredient strings that contain 'of' word\"",
+                    info:"Search recipe by ingredient,\"not perfect, cases where queries like 'of' will return ingredient strings that contain 'of'\"",
                     recipe_by_ingredient:[
                         {
                             href:"/category?ingredient=",
@@ -119,11 +119,8 @@ app.get("/links",(req,res)=>{
                     ]
                 }
             ]
-
             res.json(link);
         })
-
-
 app.listen(port, ()=>{
     console.log(`listening on localhost:${port}`);
 })
