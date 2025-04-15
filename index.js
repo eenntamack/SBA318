@@ -102,7 +102,7 @@ app.get("/links",(req,res)=>{
                         type:"GET"
                     },
                     {
-                        href:"/braekfast/:recipe",
+                        href:"/breakfast/:recipe",
                         rel:"recipe",
                         type:"GET"
                     }
