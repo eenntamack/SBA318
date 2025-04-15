@@ -73,7 +73,7 @@ router.
                         }
                         ingredients += "</ul>"
                         instructions += "</ol>"
-                        data.content = `<div><h1>${recipe}</h1><h1>Ingredients</h1>${ingredients}  <h1>Directions</h1>${instructions}`
+                        data.content = `<div><h1>${recipe}</h1><h1>Ingredients</h1>${ingredients}  <h1>Directions</h1>${instructions}</div>`
                         data.footer = `<footer>${food[recipe][0]["source"]}</footer>`
                         data.background = `${JSON.stringify(food[recipe][0]["url"])}`
                         data.category = 'breakfast'
