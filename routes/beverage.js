@@ -4,12 +4,11 @@ const fs = require("fs");
 const beverages = require("../data/beverage");
 const { match } = require("assert");
 
-let contents = "<section style=\"overflow:scroll; margin:auto;\"><h1 style=\"color:white; font-size:50px; -webkit-text-stroke: 0.5px black;\">Lunch</h1><div style=\"margin:10px; display:flex; flex-direction:column;justify-content:center;\">"
+let contents = "<section style=\"overflow:scroll; margin:auto;\"><h1 style=\"color:white; font-size:50px; -webkit-text-stroke: 0.5px black;\">Beverages</h1><div style=\"margin:10px; display:flex; flex-direction:column;justify-content:center;\">"
 for(let i = 0; i < beverages.length; i++){
     contents += `<a href=\"/beverage/${Object.keys(beverages[i])[0]}\">${Object.keys(beverages[i])[0]}</a>`
 }
 contents += "</div></section>"
-
 
 router.
     route("/").
@@ -23,7 +22,6 @@ router.
             if(req.query.ingredient){
                 let findIngredient = req.query.ingredient;
                 let matchingRecipes = [];
-
                 for(const recipe of beverages){
                     const recipeName = Object.keys(recipe)[0];
                     const ingredients = recipe[recipeName][0].ingredients;
@@ -79,7 +77,7 @@ router.
                         ingredients += "</ul>"
                         instructions += "</ol>"
                         data.content = `<div><h1>${recipe}</h1><h1>Ingredients</h1>${ingredients}  <h1>Directions</h1>${instructions}</div>`
-                        data.footer =`<footer>${food[recipe][0]["source"]}</footer>`
+                        data.footer = `<footer>${food[recipe][0]["source"]}</footer>`
                         data.background = `${JSON.stringify(food[recipe][0]["url"])}`
             
                         data.category = 'beverage'
