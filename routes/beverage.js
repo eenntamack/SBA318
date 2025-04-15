@@ -62,7 +62,8 @@ router.
 router.route("/:recipe/download").get((req,res)=>{
     let food;
     let recipe = req.params.recipe
-    let info = "Ingredients\n\n";
+    let info = "Ingredients\n";
+    info += "____________\n\n"
 
     food = beverages.find(a => Object.keys(a)[0] === recipe)  
     if(req.params.recipe){
@@ -70,16 +71,18 @@ router.route("/:recipe/download").get((req,res)=>{
             info += food[recipe][0]["ingredients"][i];
             info += "\n";
         }
-        info += "Instructions\n\n";
+        info += "____________\n";
+        info += "Instructions\n";
+        info += "____________\n\n"
         for(let i = 0; i< food[recipe][0]["instructions"].length;i++){
-            info += food[recipe][0]["instructions"][i];
+            info += `${i + 1}. ${food[recipe][0]["instructions"][i]}`;
             info += "\n";
         }
+        info += `chef ${food[recipe][0]["source"]}`
         
         res.setHeader("Content-Disposition", `attachment; filename="${recipe} recipe.txt"`);
         res.setHeader("Content-Type", "text/plain");
         res.send(info);
-        
     }else{
         res.json("missing")
     }

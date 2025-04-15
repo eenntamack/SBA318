@@ -12,7 +12,7 @@
         div.addEventListener("mouseenter",()=>{ 
             main.style.backdropFilter = "blur(10px)" }) 
         div.addEventListener("mouseleave",()=>{ 
-            main.style.backdropFilter = "blur(0px)" }) })
+            main.style.backdropFilter = "blur(0px)" })})
     </script>
     <style>
     body{
@@ -24,7 +24,7 @@
     <main>
          #content#  
          <form action="/#category#/#recipe#/download">
-            <button type="submit" value="Recipe">Download Recipe</submit>
+            <button type="submit" value="Recipe">Download Recipe</button>
          </form>   
          #footer#   
     </main>
