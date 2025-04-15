@@ -59,6 +59,7 @@ app.get("/",(req,res)=>{
 
 app.get("/links",(req,res)=>{
             link = [{
+                info: "recipes will be listed by categories",
                 categories : [
                     {
                         href:"/beverage",
@@ -83,9 +84,25 @@ app.get("/links",(req,res)=>{
                 ]  
                 },
                 {
-                recipes: [
+                info: "Recipe will be returned",
+                recipe: [
                     {
-                        href:"",
+                        href:"/beverages/:recipe",
+                        rel:"recipe",
+                        type:"GET"
+                    },
+                    {
+                        href:"/desserts/:recipe",
+                        rel:"recipe",
+                        type:"GET"
+                    },
+                    {
+                        href:"/lunch/:recipe",
+                        rel:"recipe",
+                        type:"GET"
+                    },
+                    {
+                        href:"/braekfast/:recipe",
                         rel:"recipe",
                         type:"GET"
                     }

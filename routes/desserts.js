@@ -3,11 +3,11 @@ const router = express.Router();
 
 const desserts = require("../data/desserts");
 
-let contents = "<section><h1 style=\"color:white;font-size:50px; -webkit-text-stroke: 1px black;\">Desserts</h1>"
+let contents = "<section style=\"overflow:scroll; margin:auto;\"><h1 style=\"color:white; font-size:50px; -webkit-text-stroke: 0.5px black;\">Lunch</h1><div style=\"margin:10px; display:flex; flex-direction:column;justify-content:center;\">"
 for(let i = 0; i < desserts.length; i++){
-    contents += `<div style="margin:10px; overflow:scroll;"><a href=\"/desserts/${Object.keys(desserts[i])[0]}\">${Object.keys(desserts[i])[0]}</a></div>`
+    contents += `<a href=\"/desserts/${Object.keys(desserts[i])[0]}\">${Object.keys(desserts[i])[0]}</a>`
 }
-contents += "</section>"
+contents += "</div></section>"
 
 router.
     route("/").
@@ -16,7 +16,40 @@ router.
                 content : contents,
                 background: "desserts_background(congerdesign).jpg"
             }
-            res.render("index",data)
+            let search = "";
+            if(req.query.ingredient){
+                let findIngredient = req.query.ingredient;
+                let matchingRecipes = [];
+
+                for(const recipe of desserts){
+                    const recipeName = Object.keys(recipe)[0];
+                    const ingredients = recipe[recipeName][0].ingredients;
+                    for (const ingredient of ingredients) {
+                        if (ingredient.toLowerCase().includes(findIngredient)) {
+                            recipeExists = matchingRecipes.some((r) => Object.keys(r)[0] === recipeName);
+                            if(!recipeExists){
+                                matchingRecipes.push(recipe);
+                            }
+                            
+                        }
+                    }
+                }
+
+                if(matchingRecipes.length > 0){
+                    for (let i = 0; i < matchingRecipes.length; i++) {
+                        const recipeName = Object.keys(matchingRecipes[i])[0];
+                        search+= `<a href="desserts/${recipeName}">${recipeName}</a>`
+                    }
+
+                    data.content = search;
+                    data.background = "beverage_background(Thomas Mühl).jpg";
+                    res.render("index",data)
+                }else{
+                    res.status(404).send("No recipes have the provided ingredient.");
+                }
+            }else{
+                res.render("index",data)
+            }
         })
 
 router.
